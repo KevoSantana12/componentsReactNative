@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 import { useFonts } from 'expo-font';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
-import { Stack } from 'expo-router';
+import { Slot, Stack } from 'expo-router';
 import {
     DarkTheme,
     DefaultTheme,
@@ -13,16 +13,14 @@ import React, { useEffect } from 'react'
 import { useThemeColor } from 'hooks/useThemeColor';
 import { useColorScheme } from 'hooks/useColorScheme.web';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import ThemedView from 'presentation/shared/ThemedView';
-import ThemedText from 'presentation/shared/ThemedText';
+import { allRoutes } from 'constants/Routes';
+import '../global.css';
 
 
 SplashScreen.preventAutoHideAsync();
 
 
 const Index = () => {
-
-
 
     const backgroundColor = useThemeColor({}, 'background');
     const colorScheme = useColorScheme();
@@ -53,19 +51,45 @@ const Index = () => {
 
                 <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
 
-                    <ThemedView margin>
+                    {/* <ThemedView margin>
 
                         <ThemedText type='h1' className='mt-20'>
                             Hola Mundo
                         </ThemedText>
-                    </ThemedView>
+                    </ThemedView> */}
 
-                    {/* <Stack>
+                    <Stack
+                        screenOptions={{
+                            headerShadowVisible: false,
+                            contentStyle: {
+                                backgroundColor: backgroundColor,
+                            },
+                            headerStyle: {
+                                backgroundColor: backgroundColor,
+                            },
+                        }}
+                    >
+                        <Stack.Screen
+                            name="index"
+                            options={{
+                                title: '',
+                            }}
+                        />
 
+                        {allRoutes.map((route) => (
+                            <Stack.Screen
+                                key={route.name}
+                                name={route.name}
+                                options={{
+                                    title: route.title,
+                                }}
+                            />
+                        ))}
+                    </Stack>
 
+                    {/* <Slot>
 
-                    </Stack> */}
-
+                    </Slot> */}
 
                 </ThemeProvider>
             </SafeAreaProvider>

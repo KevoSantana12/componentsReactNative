@@ -4,7 +4,10 @@ import { Colors } from './constants/Colors'
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./app/**/*.{js,ts,tsx}', './components/**/*.{js,ts,tsx}'],
+  content: [
+    './app/**/*.{js,ts,tsx}',
+    './presentation/**/*.{js,ts,tsx}'
+  ],
 
   presets: [require('nativewind/preset')],
   theme: {

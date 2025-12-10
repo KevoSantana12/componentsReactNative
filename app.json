@@ -4,6 +4,7 @@
     "slug": "my-expo-app",
     "entryPoint": "expo-router/entry",
     "version": "1.0.0",
+    "scheme": "myapp",
     "web": {
       "favicon": "./assets/favicon.png"
     },
@@ -36,7 +37,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "userInterfaceStyle": "automatic"
+      "userInterfaceStyle": "automatic",
+      "package": "com.anonymous.myexpoapp"
     }
   }
 }
